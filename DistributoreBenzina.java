@@ -1,3 +1,4 @@
+/* MARILINA D'ANDRETTA */
 
 public class DistributoreBenzina {
   
@@ -18,10 +19,25 @@ public class DistributoreBenzina {
   }
 
   // TODO: vendi deve modificare anche il serbatorio dell'auto che sta rifornendo
-  // quindi deve prendere in input euro ma anche un oggetto Car a cui farà rifornimento di gas in base all'importo pagato
-  public void vendi(double euro) {
-    deposito = deposito - (euro / euroPerLitro);
-  }
+  // quindi deve prendere in input euro ma anche un oggetto Car a cui farÃ  rifornimento di gas in base all'importo pagato
+ 
+  
+  public float vendi(double euro, Car macchina) { 
+  
+    
+   
+      float benzina = (float)(euro/euroPerLitro);
+      macchina.setGas(benzina);
+      float resto = macchina.setGas(benzina);
+      deposito = deposito - (euro/euroPerLitro) + resto; 
+    
+      if (resto > 0) {
+        return resto;   
+      }     
+      return 0;     
+        }
+ 
+  
 
   public void aggiorna(double unPrezzoPerLitro) {
     euroPerLitro = unPrezzoPerLitro;
@@ -34,9 +50,8 @@ public class DistributoreBenzina {
   
   // TODO: implementare un metodo che prende in input un oggetto Wheels e
   //   fornisce la manutenzione necessaria (controlla le ruote e riporta lo
-  //   statoRuote a 0, controlla la pressione e riporta la pressione al massimo)
+  //   statoRuote a 0, controlla la pressione e riporta la pressione al massimo) //MODIFICATO in wheels
   public void manutenzioneRuote(Wheels ruote){
-    // TODO implementare...
     return;
   }  
   
