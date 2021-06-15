@@ -17,10 +17,31 @@ public class DistributoreBenzina {
     deposito = deposito + unaQuantita;
   }
 
-  // TODO: vendi deve modificare anche il serbatorio dell'auto che sta rifornendo
-  // quindi deve prendere in input euro ma anche un oggetto Car a cui farà rifornimento di gas in base all'importo pagato
-  public void vendi(double euro) {
-    deposito = deposito - (euro / euroPerLitro);
+  // se il serbatoio della macchina non è sufficiente per contenere la benzina che si sta acquistando,
+  // il metodo restituisce il resto dovuto in euro
+  public float vendi(int euro, Car macchina) {
+    // calcolo i litri di benzina per la quantità di euro in input ed inizializzo la variabile per il resto
+    double litriRifornimento = euro / euroPerLitro;
+    float resto = 0;
+    
+    // controllo se il distributore ha sufficiente benzina per il rifornimento richesto
+    if (litriRifornimento > deposito){
+      resto += (litriRifornimento - deposito) * euroPerLitro;
+      litriRifornimento = deposito;
+    }
+    
+    // faccio rifornimento alla macchina, salvando eventuali litri restituiti che non sono 
+    //   entrati nel serbatoio per eccedenza della capacità
+    float litriEccesso = macchina.setGas((float) litriRifornimento);
+    
+    // aggiungo al resto la quantità di litri in eccesso sul serbatorio (se presente)
+    resto += litriEccesso * euroPerLitro;
+    
+    // sottraggo dal deposito distributore i litri di rifornimento reali fatti (reinserendo eventuali eccessi)
+    deposito -= (litriRifornimento - litriEccesso);
+    
+    // restituisco il resto
+    return resto;    
   }
 
   public void aggiorna(double unPrezzoPerLitro) {
@@ -31,13 +52,39 @@ public class DistributoreBenzina {
     return deposito;
   } 
   
-  
-  // TODO: implementare un metodo che prende in input un oggetto Wheels e
-  //   fornisce la manutenzione necessaria (controlla le ruote e riporta lo
-  //   statoRuote a 0, controlla la pressione e riporta la pressione al massimo)
   public void manutenzioneRuote(Wheels ruote){
-    // TODO implementare...
+    switch(ruote.controlloRuote()) {
+	case 3:
+	  ruote.gonfiaRuote();
+	  ruote.manutenzioneRuote();
+	  break;
+	case 2:
+	  ruote.gonfiaRuote();
+	  break;
+	case 1:
+	  ruote.manutenzioneRuote();
+	  break;
+    }
     return;
+    
+    // Altra possibile soluzione usando costrutto if
+    /*
+    
+    int statusRuote = ruote.controlloRuote();
+    
+    if (statusRuote == 0)
+      return;
+     
+    if (statusRuote == 1 || statusRuote == 3)
+      ruote.manutenzioneRuote();
+    
+    if (statusRuote == 2 || statusRuote == 3)
+      ruote.gonfiaRuote();
+    
+    return;    
+    
+    */
+    
   }  
   
   
