@@ -1,3 +1,7 @@
+/***********************************************
+*	Paolo Bondi - Corso TIC (UF6) - 04/06/21   *
+*	Esercizio2 - Automobili e distributori v2  *											
+***********************************************/
 import java.util.Scanner;
 
 public class MappaDistributori {
@@ -6,7 +10,7 @@ public class MappaDistributori {
 
       DistributoreBenzina esso = new DistributoreBenzina(1.489);
     
-      Car panda = new Car("Panda", 20, 50);
+      Car panda = new Car("Panda", 20);
       
       panda.setGas(20);
       esso.rifornisci(200.0);
@@ -33,7 +37,7 @@ public class MappaDistributori {
         
       }
       
-      System.out.println("Il distributore non ha piÃ¹ benzina, sono rimasti " + panda.getGas() + " litri nel serbatoio");
+      System.out.println("Il distributore non ha più benzina, sono rimasti " + panda.getGas() + " litri nel serbatoio");
       panda.stampaInfo();
       while (panda.getGas() > 0){
       	  System.out.println("Guidi per 10 km...");
