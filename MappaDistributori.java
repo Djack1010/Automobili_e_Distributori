@@ -1,3 +1,5 @@
+// commento pb
+
 import java.util.Scanner;
 
 public class MappaDistributori {
