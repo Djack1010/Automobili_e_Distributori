@@ -1,3 +1,6 @@
+//Lorenzo Tozzetti
+
+
 import java.util.Scanner;
 
 public class MappaDistributori {
@@ -26,13 +29,14 @@ public class MappaDistributori {
         Scanner in = new Scanner(System.in);
         System.out.printf("Il benzinaio ti chiede: 'Quanto faccio?'   ");
         int s = in.nextInt();
+        
         float resto = esso.vendi(s, panda);
         System.out.println("Ti vengono restituiti " + resto + " euro di resto");
         esso.manutenzioneRuote(panda.getRuote());
         panda.stampaInfo();
         
       }
-      
+  
       System.out.println("Il distributore non ha più benzina, sono rimasti " + panda.getGas() + " litri nel serbatoio");
       panda.stampaInfo();
       while (panda.getGas() > 0){
