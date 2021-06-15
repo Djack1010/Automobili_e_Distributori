@@ -1,4 +1,5 @@
 public class Car 
+// vediamo un po' se riesco a committare 'sto commento...
 {
   // TODO: aggiungere anche la capacità massima del serbatorio, e implementare controlli per assicurarsi che il gas immagazzinato non ecceda la capacità massima
   private String nome;
