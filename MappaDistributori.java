@@ -4,6 +4,9 @@ public class MappaDistributori {
   
   public static void main(String atgs[]) {
 
+
+// modifiche del 15/06/21 da Valentina
+// altra modifica
       DistributoreBenzina esso = new DistributoreBenzina(1.489);
     
       Car panda = new Car("Panda", 20, 50);
