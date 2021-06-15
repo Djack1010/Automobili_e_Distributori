@@ -2,6 +2,7 @@ public class Car
 {
   // TODO: aggiungere anche la capacità massima del serbatorio, e implementare controlli per assicurarsi che il gas immagazzinato non ecceda la capacità massima
   private String nome;
+// Ennesima modifica inutile
   private float resa;
   private float serbatoio;
   private Wheels ruote;
