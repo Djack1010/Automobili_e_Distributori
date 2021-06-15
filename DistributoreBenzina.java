@@ -3,6 +3,7 @@ public class DistributoreBenzina {
   
   // variabili di istanza della classe
   public double deposito;
+  // COMMENTO PER AGGIUNGERE UNA MODIFICA
   public double euroPerLitro;
   
   //  costruttore della classe
