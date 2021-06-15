@@ -2,9 +2,11 @@ public class Wheels {
   
   private float statoRuote; // km percorsi per valutare l'usura delle ruote
   private float pressioneRuote;
+  private float maxPressione;
   
-  public Wheels(float maxPressione) {
+  public Wheels(float maxPr) {
     statoRuote = 0;
+    maxPressione = maxPr;
     pressioneRuote = maxPressione; // inizializzo ruote gonfie al massimo, 2.5 bar
   }
   
@@ -17,25 +19,30 @@ public class Wheels {
     if (pressioneRuote < 0.2f)
       pressioneRuote = 0.01f; 
   }
+  
+  public void gonfiaRuote(){ pressioneRuote = maxPressione; }
+  public void manutenzioneRuote(){ statoRuote = 0; }
     
-  public void controlloRuote(){
+  // Il metodo restituisce un intero
+  //   0 -> se tutto ok
+  //   1 -> se vanno controllate le ruote
+  //   2 -> se vanno gonfiate le ruote
+  //   3 -> se vanno sia controllate che gonfiate
+  public int controlloRuote(){
   
   	if (statoRuote > 300 && pressioneRuote < 1.5) {
-  	  System.out.println("Necessario controllare e gonfiare le ruote");
-  	  return;
-  	}
-  	
-  	if (statoRuote > 300) {
-  	  System.out.println("Necessario controllare le ruote");
-  	  return;
+  	  return 3;
   	}
   	
   	if (pressioneRuote < 1.5){
-  	  System.out.println("Necessario gonfiare le ruote");
-  	  return;
+  	  return 2;
   	}
   	
-  	System.out.println("Ruote in perfetto stato, nessuna operazione richiesta");
+  	if (statoRuote > 300) {
+  	  return 1;
+  	}
+  	
+  	return 0;
   }
   
   public String stampaInfo() { return "statoRuote (" + statoRuote + "), pressioneRuote (" + pressioneRuote + ")"; }
