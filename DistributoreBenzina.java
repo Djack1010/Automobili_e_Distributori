@@ -10,7 +10,7 @@ public class DistributoreBenzina {
     setEuroPerLitro(unPrezzoPerLitro);
     setDeposito(0);
   }
-  
+  //Commento per aggiungere una modifica
   
   //  metodi della classe
   public void rifornisci(double unaQuantita) {
